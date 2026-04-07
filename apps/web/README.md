@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nexus Web
 
-## Getting Started
+The main web application for Nexus. Lets users load iCal calendars and visualize events on an interactive map.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **iCal import** — paste any `.ics` URL to load calendar events
+- **Multiple calendars** — add, toggle visibility, refresh, or remove calendars independently
+- **Interactive map** — events with locations are geocoded and plotted on a Mapbox map
+- **Mini calendar** — month view with date range selection to filter events
+- **Location details** — click an event or marker to see a detail card with directions links
+- **Persistence** — linked calendars are saved to localStorage and restored on reload
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org) (App Router)
+- [Mapbox GL](https://docs.mapbox.com/mapbox-gl-js/) via [react-map-gl](https://visgl.github.io/react-map-gl/)
+- [ical.js](https://github.com/kewisch/ical.js) for iCal parsing
+- [Tailwind CSS](https://tailwindcss.com) for styling
+- Shared types from `@nexus/types`
+
+## Setup
+
+1. Copy `.env.example` to `.env.local` and add your Mapbox token
+2. Run `pnpm dev` from the monorepo root (or `pnpm dev --filter web`)
+
+## Project Layout
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+src/
+  app/           Pages, layout, API routes
+  components/    UI components (MapView, drawers, calendar, search bar)
+  lib/           Utilities (iCal fetching, localStorage persistence)
+```
