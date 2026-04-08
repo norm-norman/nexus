@@ -1,6 +1,7 @@
+export type { ApiResponse } from './common';
+export type { GetHealthResponse } from './health';
 export type {
   AllCalendarsEventsData,
-  ApiResponse,
   CalendarDto,
   CalendarFeedEvent,
   CreateCalendarRequestBody,
@@ -9,7 +10,5 @@ export type {
   GeocodedLocation,
   GetAllCalendarEventsResponse,
   GetCalendarEventsResponse,
-  GetHealthResponse,
   ListCalendarsResponse,
-} from './api/index';
-export type { CalendarEvent, CalendarSource } from './client';
+} from './calendars';

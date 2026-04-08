@@ -2,6 +2,24 @@ opencollection: 1.0.0
 
 info:
   name: nexus-api-collection
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+
+request:
+  variables:
+    - name: calendar-id-gmail
+      value: 40511c66-78c5-4182-8d12-5e09bd5db98b
+    - name: calendar-id-proton
+      value: 14e049dd-be36-4305-8745-9924d3f2066f
 bundled: false
 extensions:
   bruno:

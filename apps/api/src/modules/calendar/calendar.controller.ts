@@ -1,3 +1,10 @@
+import type {
+  CreateCalendarRequestBody,
+  CreateCalendarResponse,
+  GetAllCalendarEventsResponse,
+  GetCalendarEventsResponse,
+  ListCalendarsResponse,
+} from '@nexus/types';
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { CalendarService } from './calendar.service';
 
@@ -6,22 +13,22 @@ export class CalendarController {
   constructor(private readonly calendarService: CalendarService) { }
 
   @Post('/')
-  async create(@Body() body: any): Promise<{ data: any, message: string; status: number }> {
+  async create(@Body() body: CreateCalendarRequestBody): Promise<CreateCalendarResponse> {
     return await this.calendarService.createCalendar(body);
   }
 
   @Get('/')
-  async getCalendars(): Promise<{ data: any, message: string; status: number }> {
+  async getCalendars(): Promise<ListCalendarsResponse> {
     return await this.calendarService.getCalendars();
   }
 
   @Get('/:calendarId/events')
-  async getCalendarEvents(@Param('calendarId') calendarId: string): Promise<{ data: any, message: string; status: number }> {
+  async getCalendarEvents(@Param('calendarId') calendarId: string): Promise<GetCalendarEventsResponse> {
     return await this.calendarService.getCalendarEvents(calendarId);
   }
 
   @Get('/events')
-  async getAllCalendarEvents(): Promise<{ data: any, message: string; status: number }> {
+  async getAllCalendarEvents(): Promise<GetAllCalendarEventsResponse> {
     return await this.calendarService.getAllCalendarEvents();
   }
 }

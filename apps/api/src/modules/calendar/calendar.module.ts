@@ -4,10 +4,13 @@ import { CalendarService } from './calendar.service';
 import { HttpModule } from '@nestjs/axios';
 import { PrismaModule } from 'src/prisma/prisma.module';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { LocationModule } from '../location/location.module';
+import { LocationService } from '../location/location.service';
 
 @Module({
   imports: [
     PrismaModule,
+    LocationModule,
     // Configure the global HttpModule
     HttpModule.register({
       timeout: 5000,
@@ -18,6 +21,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
       },
     })],
   controllers: [CalendarController],
-  providers: [CalendarService, PrismaService]
+  providers: [CalendarService, PrismaService, LocationService]
 })
 export class CalendarModule { }
