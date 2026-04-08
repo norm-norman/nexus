@@ -9,4 +9,19 @@ export class CalendarController {
   async create(@Body() body: any): Promise<{ data: any, message: string; status: number }> {
     return await this.calendarService.createCalendar(body);
   }
+
+  @Get('/')
+  async getCalendars(): Promise<{ data: any, message: string; status: number }> {
+    return await this.calendarService.getCalendars();
+  }
+
+  @Get('/:calendarId/events')
+  async getCalendarEvents(@Param('calendarId') calendarId: string): Promise<{ data: any, message: string; status: number }> {
+    return await this.calendarService.getCalendarEvents(calendarId);
+  }
+
+  @Get('/events')
+  async getAllCalendarEvents(): Promise<{ data: any, message: string; status: number }> {
+    return await this.calendarService.getAllCalendarEvents();
+  }
 }
