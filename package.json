@@ -3,7 +3,13 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "docker:build:api": "docker compose build api",
+    "docker:build:prisma": "docker compose build prisma",
+    "docker:up:api": "docker compose up api",
+    "docker:up:api:detached": "docker compose up -d api",
+    "docker:down": "docker compose down",
+    "dev": "pnpm docker:build:prisma && turbo run dev",
+    "dev:all": "pnpm docker:up:api:detached && turbo run dev --filter=web --filter=mobile",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"

@@ -17,7 +17,7 @@ config:
 request:
   variables:
     - name: calendar-id-gmail
-      value: 40511c66-78c5-4182-8d12-5e09bd5db98b
+      value: 02918fd5-b76d-41a5-8f87-295305f10b15
     - name: calendar-id-proton
       value: 14e049dd-be36-4305-8745-9924d3f2066f
 bundled: false

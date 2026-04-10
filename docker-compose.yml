@@ -1,0 +1,36 @@
+services:
+  prisma:
+    build:
+      context: ./docker/prisma
+      dockerfile: Dockerfile
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: nexus
+      POSTGRES_PASSWORD: nexus
+      POSTGRES_DB: nexus
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -U nexus -d nexus' ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/api/Dockerfile
+    env_file:
+      - ./apps/api/.env
+    depends_on:
+      prisma:
+        condition: service_healthy
+    ports:
+      - '9000:9000'
+    environment:
+      PORT: 9000
+      DATABASE_URL: postgresql://nexus:nexus@prisma:5432/nexus?schema=public
+
+volumes:
+  postgres_data:
