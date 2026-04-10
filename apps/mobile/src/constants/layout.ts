@@ -1,0 +1,4 @@
+export const TAB_BAR_HEIGHT = 64;
+export const DRAWER_PEEK_HEIGHT = 144;
+export const DEFAULT_LATITUDE_DELTA = 0.0922;
+export const DEFAULT_LONGITUDE_DELTA = 0.0421;

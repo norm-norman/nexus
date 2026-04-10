@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { selectFocusEvent } from '@nexus/location-utils';
 import type { CalendarEvent, CalendarSource } from '@nexus/types';
 import { fetchIcalEvents, calendarNameFromUrl, mergeEvents } from '@/lib/ical';
 import { loadSavedCalendars, saveCalendars } from '@/lib/storage';
@@ -70,18 +71,11 @@ export default function Home() {
   );
 
   const focusEvent = useMemo(() => {
-    const located = events.filter((e) => e.lat !== null && e.lon !== null);
-    if (located.length === 0) return null;
-
-    const now = Date.now();
-    const sorted = [...located]
-      .filter((e) => e.startTime)
-      .sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime());
-
-    const nextUpcoming = sorted.find((e) => new Date(e.startTime).getTime() >= now);
-    if (nextUpcoming) return nextUpcoming;
-
-    return sorted[sorted.length - 1] ?? null;
+    return selectFocusEvent(events, {
+      getLat: (event) => event.lat,
+      getLon: (event) => event.lon,
+      getStartTime: (event) => event.startTime,
+    });
   }, [events]);
 
   const handleAddCalendar = async (url: string) => {

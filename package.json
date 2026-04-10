@@ -7,9 +7,10 @@
     "docker:build:prisma": "docker compose build prisma",
     "docker:up:api": "docker compose up api",
     "docker:up:api:detached": "docker compose up -d api",
+    "docker:logs": "docker compose logs -f api prisma",
     "docker:down": "docker compose down",
     "dev": "pnpm docker:build:prisma && turbo run dev",
-    "dev:all": "pnpm docker:up:api:detached && turbo run dev --filter=web --filter=mobile",
+    "dev:all": "pnpm docker:up:api:detached && turbo run dev --filter=web --filter=mobile --filter=@nexus/devops",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
