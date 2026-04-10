@@ -32,3 +32,11 @@ src/
   components/    UI components (MapView, drawers, calendar, search bar)
   lib/           Utilities (iCal fetching, localStorage persistence)
 ```
+
+### Screenshots for fun lol
+
+`Initial Page State`
+<img width="1623" height="1333" alt="image" src="https://github.com/user-attachments/assets/424f6482-68d7-46a8-bbdc-27796d7d85b2" />
+
+`After loading ical url`
+<img width="1621" height="1351" alt="image" src="https://github.com/user-attachments/assets/e95d6a99-8265-4f04-86bc-523880286f61" />
