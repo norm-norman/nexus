@@ -1,0 +1,7 @@
+{
+  "name": "@nexus/devops",
+  "private": true,
+  "scripts": {
+    "dev": "docker compose -f ../../docker-compose.yml logs -f api prisma"
+  }
+}

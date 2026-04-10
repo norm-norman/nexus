@@ -3,7 +3,14 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "docker:build:api": "docker compose build api",
+    "docker:build:prisma": "docker compose build prisma",
+    "docker:up:api": "docker compose up api",
+    "docker:up:api:detached": "docker compose up -d api",
+    "docker:logs": "docker compose logs -f api prisma",
+    "docker:down": "docker compose down",
+    "dev": "pnpm docker:build:prisma && turbo run dev",
+    "dev:all": "pnpm docker:up:api:detached && turbo run dev --filter=web --filter=mobile --filter=@nexus/devops",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
@@ -11,7 +18,8 @@
   "devDependencies": {
     "prettier": "^3.7.4",
     "turbo": "^2.9.3",
-    "typescript": "5.9.2"
+    "typescript": "5.9.2",
+    "react": "19.1.0"
   },
   "engines": {
     "node": ">=18"

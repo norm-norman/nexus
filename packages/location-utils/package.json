@@ -1,0 +1,9 @@
+{
+  "name": "@nexus/location-utils",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

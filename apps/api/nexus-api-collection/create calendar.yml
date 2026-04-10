@@ -1,0 +1,21 @@
+info:
+  name: create calendar
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:9000/calendars
+  body:
+    type: json
+    data: |-
+      {
+        "url": "https://calendar.google.com/calendar/ical/1f5f997beb30ee18868458bbb115703e9a45cb13a53d45184afef2e903de232a%40group.calendar.google.com/public/basic.ics"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
